@@ -29,17 +29,35 @@ LOCAL_LDFLAGS := \
     -Wl,-Bsymbolic \
     -Wl,--exclude-libs,ALL \
 
+
+ifeq ($(TARGET_OLDSTYLE_PATCHES),false)
 LOCAL_CFLAGS += \
     -fno-stack-protector \
     -Wstrict-overflow=5 \
     -fvisibility=hidden \
     -Wall -Wextra -Wunused -Werror \
+else
+LOCAL_CFLAGS += \
+    -fno-stack-protector \
+    -Wstrict-overflow=5 \
+    -fvisibility=hidden \
+    -Wall -Wextra -Werror \
+endif
 
 LOCAL_CFLAGS_arm += -D__work_around_b_19059885__
 LOCAL_CFLAGS_x86 += -D__work_around_b_19059885__
 
 LOCAL_CONLYFLAGS += \
     -std=gnu99 \
+
+ifeq ($(TARGET_OLDSTYLE_PATCHES),false)
+LOCAL_CPPFLAGS += \
+    -std=gnu++11 \
+    -Wold-style-cast \
+else
+LOCAL_CPPFLAGS += \
+    -std=gnu++11 \
+endif
 
 LOCAL_CPPFLAGS += \
     -std=gnu++11 \
