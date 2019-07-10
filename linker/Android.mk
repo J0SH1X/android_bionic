@@ -35,13 +35,13 @@ LOCAL_CFLAGS += \
     -fno-stack-protector \
     -Wstrict-overflow=5 \
     -fvisibility=hidden \
-    -Wall -Wextra -Werror \
+    -Wall -Wextra -Werror 
 else
 LOCAL_CFLAGS += \
     -fno-stack-protector \
     -Wstrict-overflow=5 \
     -fvisibility=hidden \
-    -Wall -Wextra -Wunused -Werror \
+    -Wall -Wextra -Wunused -Werror 
 endif
 
 LOCAL_CFLAGS_arm += -D__work_around_b_19059885__
@@ -52,11 +52,11 @@ LOCAL_CONLYFLAGS += \
 
 ifeq ($(TARGET_OLDSTYLE_PATCHES),true)
 LOCAL_CPPFLAGS += \
-    -std=gnu++11 \
+    -std=gnu++11 
 else
 LOCAL_CPPFLAGS += \
     -std=gnu++11 \
-    -Wold-style-cast \
+    -Wold-style-cast 
 endif
 
 ifeq ($(TARGET_IS_64_BIT),true)
